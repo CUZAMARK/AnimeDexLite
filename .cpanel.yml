@@ -3,6 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/alxihsql/narsolist.topg.eu.org/
     - /bin/cp * $DEPLOYPATH
-    - /bin/cp -R css $DEPLOYPATH
-    - /bin/cp -R js $DEPLOYPATH
-    - /bin/cp -R static $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH
