@@ -2,10 +2,23 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/alxihsql/narsolist.topg.eu.org/
-    - /bin/cp * $DEPLOYPATH
+    
+    # First, copy files like index.html, etc.
+    - echo "Copying files outside directories..."
+    - /bin/cp * $DEPLOYPATH || echo "Error: Files not copied. Check path."
+    
+    # Create target directories (if they don't exist already)
+    - echo "Creating directories..."
     - /bin/mkdir -p $DEPLOYPATH/css
     - /bin/mkdir -p $DEPLOYPATH/js
     - /bin/mkdir -p $DEPLOYPATH/static
-    - /bin/cp -R css/* $DEPLOYPATH/css/
-    - /bin/cp -R js/* $DEPLOYPATH/js/
-    - /bin/cp -R static/* $DEPLOYPATH/static/
+    
+    # Copy files from the directories
+    - echo "Copying CSS files..."
+    - /bin/cp -R css/* $DEPLOYPATH/css/ || echo "Error: CSS files not copied. Check path."
+    - echo "Copying JS files..."
+    - /bin/cp -R js/* $DEPLOYPATH/js/ || echo "Error: JS files not copied. Check path."
+    - echo "Copying static files..."
+    - /bin/cp -R static/* $DEPLOYPATH/static/ || echo "Error: Static files not copied. Check path."
+    
+    - echo "Deployment completed."
