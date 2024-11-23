@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/alxihsql/narsolist.topg.eu.org/
+    - /bin/cp * $DEPLOYPATH
